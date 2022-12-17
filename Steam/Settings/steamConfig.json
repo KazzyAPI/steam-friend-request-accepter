@@ -1,0 +1,6 @@
+{
+    "account_user": "",
+    "account_password": "",
+    "account_shared_secret" : "",
+    "use_two_factor" : false
+}
