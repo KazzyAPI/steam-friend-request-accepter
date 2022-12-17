@@ -1,19 +1,20 @@
-const {account_name, account_password, account_shared_secret, use_two_factor} = require('./steamConfig.json');
-SteamTotp = require('steam-totp');
+const {account_user, account_password, account_shared_secret, use_two_factor} = require('./steamConfig.json');
+const SteamTotp = require('steam-totp');
 
-const LogOnOptions2Fa = {
-	accountName: account_name,
+
+const LogOnDetailsNamePass = {
+	accountName: account_user,
 	password: account_password,
-	twoFactorCode: SteamTotp.generateAuthCode(account_shared_secret)
+	twoFactorCode: SteamTotp.getAuthCode(account_shared_secret)
 }
 
 const LogOnOptions = {
-	accountName: account_name,
+	accountName: account_user,
 	password: account_password,
 }
 
 module.exports = {
-	LogOnOptions2Fa,
+	LogOnDetailsNamePass,
 	LogOnOptions,
 	use_two_factor
 }

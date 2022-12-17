@@ -1,6 +1,7 @@
 {
     "account_user": "",
     "account_password": "",
+    "identity_secret": "",
     "account_shared_secret" : "",
-    "use_two_factor" : false
+    "use_two_factor" : true
 }
