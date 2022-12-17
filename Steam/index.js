@@ -1,10 +1,6 @@
-let SteamUser;
-
+var SteamUser ;
 const settings = require("./Settings/account_setup");
 const { log } = require("../Utils/index");
-const {message} = require('./Settings/steamMessage.json')
-
-
 
 try {
   SteamUser = require("steam-user");
@@ -18,19 +14,27 @@ try {
 
 const client = new SteamUser();
 client.logOn(
-  settings.use_two_factor ? settings.LogOnOptions2Fa : settings.LogOnOptions
+  settings.use_two_factor ? settings.LogOnDetailsNamePass : settings.LogOnOptions
 );
 
-client.on("loggedOn", () => {
+client.on("loggedOn", (d) => {
     log.info('Succesfully logged in!')
+    client.setPersona(SteamUser.EPersonaState.Away)
+    client.gamesPlayed(settings.getGamesPlayed(), true)
 });
 
+client.on('accountInfo', function(name, country, authedMachines, flags, fbID, fbName) {
+
+    log.info('SteamName :', name);
+    log.info('SteamDevs :', authedMachines);
+  });
+  
 client.on('error', err => {
     log.error(err.message);
 })
 
 client.on('accountLimitations', (data) => {
-    log.info(data);
+    log.info("Steam limitations : ", data);
 })
 
 client.on('disconnected', (eresult, msg) => {
@@ -57,7 +61,7 @@ client.on('friendRelationship', (steamid, relationship) => {
         break;
         case 2:
             client.addFriend(steamid);
-            client.chatMessage(steamid, message);
+            client.chatMessage(steamid, settings.getMessage());
         break;
         case 3: 
         log.info("Some has happened with a friend");
@@ -75,4 +79,12 @@ client.on('friendRelationship', (steamid, relationship) => {
         log.info("TODO Suggested friend");
     }
 })
+
+client.on('friendMessage', (senderId , message) => {
+
+    log.info('Messaged received!')
+
+})
+
+
 

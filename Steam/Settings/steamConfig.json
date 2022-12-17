@@ -3,5 +3,6 @@
     "account_password": "",
     "identity_secret": "",
     "account_shared_secret" : "",
-    "use_two_factor" : true
+    "use_two_factor" : true,
+    "gamesPlayed": "Anything can be put here"
 }

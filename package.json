@@ -20,6 +20,7 @@
   "dependencies": {
     "fancy-log": "^2.0.0",
     "steam-totp": "^2.1.2",
-    "steam-user": "^4.26.0"
+    "steam-user": "^4.26.0",
+    "steamcommunity": "^3.44.3"
   }
 }
