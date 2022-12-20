@@ -1,4 +1,4 @@
-const {log} = require("./Utils/index");
+const { log } = require("./Utils/index");
 
 log.info("Doing initial module setup . . . ");
-require('./Steam/index')
+require("./Steam/index");

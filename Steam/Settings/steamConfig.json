@@ -1,8 +1,12 @@
 {
     "account_user": "",
-    "account_password": "",
+    "account_password": "?",
     "identity_secret": "",
     "account_shared_secret" : "",
     "use_two_factor" : true,
-    "gamesPlayed": "Anything can be put here"
+    "gamesPlayed": "Anything can be put here",
+    "bot_prefix": "!",
+    "list_of_admins": [
+        "76561198000000000"
+    ]
 }
